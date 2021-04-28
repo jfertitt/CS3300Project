@@ -1,2 +1,3 @@
 class Post < ApplicationRecord
-end
+    validates_presence_of :title, :content
+  end
