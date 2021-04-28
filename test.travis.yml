@@ -1,12 +1,40 @@
 language: ruby
+
 cache: bundler
+
 bundler_args: --without production
 
+
+
 rvm:
- - 2.7.0
- 
+
+- 2.7.0
+
 before_install:
- - gem install bundler:2.2.11
+
+- gem install bundler:2.2.11
+
+
+
 
 script:
- - bundle exec rspec
+
+- bundle exec rspec
+
+
+
+deploy:
+
+provider: heroku
+
+api_key: 6b71af92-12b0-42d7-9c40-ce30b3eadc26
+
+app: dry-crag-71015
+
+run: "rake db:migrate"
+
+run: "git push heroku master"
+
+on:
+
+branch: master
